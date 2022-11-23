@@ -54,11 +54,11 @@ async function run() {
         app.delete('/todoInfo', async (req, res) => {
             const deletedProduct = req.body;
             const { _id } = deletedProduct;
-            console.log(_id);
+            // console.log(_id);
 
             const query = { _id: ObjectId(_id) };
             const result = await todoInfoCollection.deleteOne(query);
-            console.log("deleted successfully ", result);
+            // console.log("deleted successfully ", result);
             res.json(result);
         })
     }
