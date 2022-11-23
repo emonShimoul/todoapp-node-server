@@ -21,8 +21,10 @@ async function run() {
         const todoInfoCollection = database.collection('todoinfo');
 
         app.post('/todoInfo', async (req, res) => {
-            const books = req.body;
-            console.log(books);
+            const todoInfo = req.body;
+            // console.log(todo);
+            const result = await todoInfoCollection.insertOne(todoInfo);
+            res.json(result);
         })
     }
     finally {
