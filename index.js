@@ -49,6 +49,18 @@ async function run() {
             const result = await todoInfoCollection.updateOne(filter, updateDoc);
             res.json(result);
         })
+
+        // DELETE API
+        app.delete('/todoInfo', async (req, res) => {
+            const deletedProduct = req.body;
+            const { _id } = deletedProduct;
+            console.log(_id);
+
+            const query = { _id: ObjectId(_id) };
+            const result = await todoInfoCollection.deleteOne(query);
+            console.log("deleted successfully ", result);
+            res.json(result);
+        })
     }
     finally {
         // await client.close(); 
