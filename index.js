@@ -21,6 +21,7 @@ async function run() {
         const database = client.db('todoapp');
         const todoInfoCollection = database.collection('todoinfo');
 
+        // POST API
         app.post('/todoInfo', async (req, res) => {
             const todoInfo = req.body;
             // console.log(todoInfo);
@@ -28,6 +29,7 @@ async function run() {
             res.json(result);
         })
 
+        // GET API
         app.get('/todoInfo', async (req, res) => {
             const cursor = todoInfoCollection.find();
             const todoInfo = await cursor.toArray();
