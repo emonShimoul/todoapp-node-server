@@ -24,7 +24,6 @@ async function run() {
         // POST API
         app.post('/todoInfo', async (req, res) => {
             const todoInfo = req.body;
-            // console.log(todoInfo);
             const result = await todoInfoCollection.insertOne(todoInfo);
             res.json(result);
         })
@@ -40,7 +39,6 @@ async function run() {
         app.put('/todoInfo', async (req, res) => {
             const updatedProduct = req.body;
             const { state, id } = updatedProduct;
-            // console.log(state, id);
 
             const filter = { _id: ObjectId(id) };
             const updateDoc = {
