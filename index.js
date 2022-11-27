@@ -39,7 +39,6 @@ async function run() {
         app.put('/todoInfo', async (req, res) => {
             const updatedProduct = req.body;
             const { state, id } = updatedProduct;
-
             const filter = { _id: ObjectId(id) };
             const updateDoc = {
                 $set: {
@@ -54,11 +53,8 @@ async function run() {
         app.delete('/todoInfo', async (req, res) => {
             const deletedProduct = req.body;
             const { _id } = deletedProduct;
-            // console.log(_id);
-
             const query = { _id: ObjectId(_id) };
             const result = await todoInfoCollection.deleteOne(query);
-            // console.log("deleted successfully ", result);
             res.json(result);
         })
     }
@@ -69,11 +65,8 @@ async function run() {
 run().catch(console.dir);
 
 app.get('/', (req, res) => {
-
     res.send('Hello TODO APP!!')
-
 });
-
 app.listen(port, () => {
     console.log(`listening at ${port}`)
 });
